@@ -191,6 +191,15 @@ public class GameScreen implements Screen, EventBus.EventListener {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
+        // --- CÓDIGO DO FUNDO ADICIONADO AQUI ---
+        // Renderiza o fundo antes de qualquer outro elemento na cena do jogo
+        if (assets.backgroundTexture != null) {
+            batch.draw(assets.backgroundTexture, camera.position.x - viewport.getWorldWidth()/2,
+                camera.position.y - viewport.getWorldHeight()/2,
+                viewport.getWorldWidth(), viewport.getWorldHeight());
+        }
+        // ----------------------------------------
+
         for (Item item : itens) item.render(batch);
         for (Obstacle obs : obstacles) obs.render(batch);
         if (portal != null) portal.render(batch);

@@ -71,6 +71,16 @@ public class MenuScreen implements Screen, Disposable {
 
         camera.update();
 
+        // --- CÓDIGO DO FUNDO ADICIONADO AQUI ---
+        // Desenha a textura de fundo antes dos botões para que fique por trás
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        if (assets.backgroundTexture != null) {
+            batch.draw(assets.backgroundTexture, 0, 0, WORLD_WIDTH, WORLD_HEIGHT);
+        }
+        batch.end();
+        // ----------------------------------------
+
         shapeRenderer.setProjectionMatrix(camera.combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
