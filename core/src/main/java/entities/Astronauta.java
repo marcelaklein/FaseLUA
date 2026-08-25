@@ -33,7 +33,7 @@ public class Astronauta extends Entidade implements Interagivel {
         this.physicsWorld = physicsWorld;
 
         // OTIMIZAÇÃO: Puxar a textura direto do AssetManager evita Memory Leak e travamentos
-        Texture texture = assets.get("textures/astronauta.png", Texture.class);
+        Texture texture = new Texture(com.badlogic.gdx.Gdx.files.internal("textures/astronauta.png"));
         sprite = new Sprite(texture);
         sprite.setSize(width, height);
         sprite.setPosition(x, y);
